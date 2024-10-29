@@ -1,0 +1,75 @@
+Following the requirement format and the example below, provide detailed requirements for the chrome extension link below.
+
+https://chromewebstore.google.com/detail/gpt-workspace/jgocjgkdladclacgmkkiklmdcmngjcba?hl=en
+
+---- 
+Requirement Format ::
+
+I'm building a Chrome extension with the following details:
+
+1. Extension Name: [Name]
+
+2. Core Problem/Pain Point:
+   - [Describe the main problem your extension solves]
+   - [Who experiences this problem]
+   - [Why existing solutions aren't adequate]
+
+3. Key Features:
+   - Feature 1: [Detailed description]
+   - Feature 2: [Detailed description]
+   [Add more features as needed]
+
+4. Technical Requirements:
+   - Chrome APIs needed: [e.g., storage, tabs, contextMenus]
+   - Permissions required: [e.g., activeTab, storage, etc.]
+   - External APIs/services to integrate: [if any]
+
+5. User Interface Components:
+   - Popup UI: [Describe what you want in the popup]
+   - Options page: [If needed, describe settings]
+   - Content scripts: [Describe any webpage modifications]
+   - Background scripts: [Describe background operations]
+
+6. Specific Help Needed:
+   - [What specific part you need help with]
+   - [Any particular coding challenges]
+   - [Specific implementation questions]
+
+Please help me with [specific ask - e.g., "creating the initial project structure", "implementing Feature X", "debugging an issue with Y"]
+
+---- 
+Example 
+
+I'm building a Chrome extension with the following details:
+
+1. Extension Name: QuickTranslate
+
+2. Core Problem/Pain Point:
+   - Users need to copy-paste text to translate it
+   - Students and professionals working with multilingual content
+   - Current solutions require too many clicks or page switches
+
+3. Key Features:
+   - Right-click translation: Instantly translate selected text
+   - Language detection: Automatically detect source language
+   - History tracking: Save recent translations
+   
+4. Technical Requirements:
+   - Chrome APIs: contextMenus, storage, tabs
+   - Permissions: contextMenus, storage, activeTab
+   - External APIs: Google Translate API
+
+5. User Interface Components:
+   - Popup UI: Language selection dropdown, history view
+   - Options page: Default language settings, history preferences
+   - Content scripts: Text selection handling, translation overlay
+   - Background scripts: API calls handling, context menu creation
+
+6. Specific Help Needed:
+   - Need help creating the manifest.json
+   - Setting up the context menu functionality
+   - Implementing the translation overlay
+
+Please help me set up the basic project structure and create the manifest.json file.
+
+-----

@@ -1,0 +1,50 @@
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f5f5f5;
+}
+
+.toolbar {
+    display: flex;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    gap: 20px;
+}
+
+.tool-group {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.tool-btn {
+    padding: 8px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tool-btn:hover {
+    background: #f0f0f0;
+}
+
+.tool-btn.active {
+    background: #e0e0e0;
+}
+
+.canvas-container {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0e0e0;
+}
+
+#editorCanvas {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}

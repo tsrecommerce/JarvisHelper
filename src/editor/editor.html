@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jarvis Helper - Editor</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div class="editor-container">
+        <div class="toolbar">
+            <div class="tool-group">
+                <button id="pencil" class="tool-btn">✏️</button>
+                <button id="rectangle" class="tool-btn">⬜</button>
+                <button id="arrow" class="tool-btn">➡️</button>
+                <button id="text" class="tool-btn">T</button>
+                <input type="color" id="colorPicker" value="#ff0000">
+                <input type="range" id="strokeWidth" min="1" max="20" value="3">
+                <button id="undo" class="tool-btn">↩️</button>
+                <button id="redo" class="tool-btn">↪️</button>
+                <button id="save" class="tool-btn">💾</button>
+            </div>
+        </div>
+        <div class="canvas-container">
+            <canvas id="editorCanvas"></canvas>
+        </div>
+    </div>
+    <script src="editor.js"></script>
+</body>
+</html>

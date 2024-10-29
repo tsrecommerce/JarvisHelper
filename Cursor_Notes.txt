@@ -1,0 +1,27 @@
+Cursor
+
+commands powershell console
+
+New-Item -Path "options\options.css" -ItemType File
+New-Item -Path "options\options.js" -ItemType File
+New-Item -Path "options\options.html" -ItemType File
+
+When selective capture is clicked, this error occurs
+Uncaught SyntaxError: Identifier 'CaptureOverlay' has already been declared (at capture-overlay.js:1:1)
+
+Full page capture looks to be working but where does it store it. 
+
+Screen recording does not do any action
+
+New-Item -Path "background\screen-select.js" -ItemType File
+New-Item -Path "background\screen-select.html" -ItemType File
+New-Item -Path "background\screen-select.html" -ItemType File
+
+
+The following changes are what I need to make
+1) The Popup does not have Jarvis Icon. It needs to have a title Jarvis Helper with the logo.
+2) The popup needs to stay in the same window and tab when initiated and needs to be showing up as a side bar on the right hand side.
+3) this popup side bar needs to be collapsible but with some visibility .
+4) The popup need to have 6 sections Screen Capture, Video Recording, Todo List , Save Bookmark, Help from AI, Data Google Docs/sheets
+5) Use icons in src\icons to take action from user.
+

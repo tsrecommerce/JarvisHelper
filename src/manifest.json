@@ -1,0 +1,67 @@
+{
+    "manifest_version": 3,
+    "name": "Jarvis Helper",
+    "version": "1.0",
+    "description": "Jarvis Helper is a chrome extension that offers a comprehensive suite of features for capturing and editing screen content. Users can take full-page screenshots, capturing entire web pages including hidden sections, or selectively capture specific areas of a webpage. It also allows screen recording of videos from various sources, alongside a built-in editor for annotating screenshots with drawing tools, text boxes, and stickers. ",
+    "permissions": [
+        "activeTab",
+        "desktopCapture",
+        "storage",
+        "identity",
+        "identity.email",
+        "downloads",
+        "scripting",
+        "notifications",
+        "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "/background/background.js",
+        "type": "module"
+    },
+    "options_page": "/options/options.html",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "css": ["/content/capture-overlay.css"],
+            "js": [
+                "/content/capture-overlay.js",
+                "/content/capture.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_title": "Jarvis Helper",
+        "default_popup": "/popup/popup.html",
+        "default_icon": {
+            "16": "/icons/icon16.png",
+            "48": "/icons/icon48.png",
+            "128": "/icons/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "/icons/icon16.png",
+        "48": "/icons/icon48.png",
+        "128": "/icons/icon128.png"
+    },
+    "oauth2": {
+        "client_id": "47330203944-bugrlgeki64jdl1n3okbe7bs9qk4obbf.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email",
+            "https://www.googleapis.com/auth/userinfo.profile"
+        ]
+    },
+    "web_accessible_resources": [{
+        "resources": [
+            "editor/*",
+            "content/*",
+            "background/*"
+        ],
+        "matches": ["<all_urls>"]
+    }],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+}
