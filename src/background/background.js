@@ -357,3 +357,136 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
     // ... other message handlers ...
 });
+
+let currentScreenshot = null;
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    switch (request.action) {
+        case 'captureFullPage':
+            captureFullPage();
+            break;
+            
+        case 'captureSelection':
+            captureSelection();
+            break;
+            
+        case 'getScreenshot':
+            sendResponse({ screenshot: currentScreenshot });
+            break;
+            
+        case 'saveScreenshot':
+            saveScreenshot(request.screenshot, request.notes);
+            break;
+    }
+    return true;
+});
+
+async function captureFullPage() {
+    const tab = await getCurrentTab();
+    
+    // Inject capture script
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: () => {
+            return {
+                width: Math.max(
+                    document.documentElement.scrollWidth,
+                    document.body.scrollWidth
+                ),
+                height: Math.max(
+                    document.documentElement.scrollHeight,
+                    document.body.scrollHeight
+                )
+            };
+        }
+    });
+
+    // Capture the visible area
+    const screenshot = await chrome.tabs.captureVisibleTab();
+    currentScreenshot = screenshot;
+    
+    // Open overlay
+    chrome.windows.create({
+        url: 'popup/overlay.html',
+        type: 'popup',
+        width: 800,
+        height: 600
+    });
+}
+
+async function captureSelection() {
+    const tab = await getCurrentTab();
+    
+    // Inject selection tool
+    await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content/selection-tool.js']
+    });
+}
+
+async function saveScreenshot(dataUrl, notes) {
+    // Save to storage
+    const screenshots = await chrome.storage.local.get('screenshots') || { screenshots: [] };
+    screenshots.screenshots.push({
+        id: Date.now(),
+        image: dataUrl,
+        notes: notes,
+        date: new Date().toISOString()
+    });
+    
+    await chrome.storage.local.set(screenshots);
+}
+
+async function getCurrentTab() {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    return tab;
+}
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'captureFullPage') {
+        handleFullPageCapture(request.tabId);
+    }
+    return true;
+});
+
+async function handleFullPageCapture(tabId) {
+    try {
+        // Inject the capture script
+        await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            function: getScrollDimensions
+        });
+
+        // Capture the visible area
+        const screenshot = await chrome.tabs.captureVisibleTab(null, {
+            format: 'png'
+        });
+
+        // Store the screenshot temporarily
+        await chrome.storage.local.set({ 
+            currentScreenshot: screenshot 
+        });
+
+        // Open the editor in a new tab
+        await chrome.tabs.create({
+            url: chrome.runtime.getURL('popup/overlay.html')
+        });
+
+    } catch (error) {
+        console.error('Capture failed:', error);
+    }
+}
+
+// Helper function to get page dimensions
+function getScrollDimensions() {
+    return {
+        width: Math.max(
+            document.documentElement.scrollWidth,
+            document.body.scrollWidth
+        ),
+        height: Math.max(
+            document.documentElement.scrollHeight,
+            document.body.scrollHeight
+        )
+    };
+}

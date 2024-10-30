@@ -17,6 +17,7 @@ New-Item -Path "background\screen-select.js" -ItemType File
 New-Item -Path "background\screen-select.html" -ItemType File
 New-Item -Path "background\screen-select.html" -ItemType File
 
+Change 1:
 
 The following changes are what I need to make
 1) The Popup does not have Jarvis Icon. It needs to have a title Jarvis Helper with the logo.
@@ -24,4 +25,32 @@ The following changes are what I need to make
 3) this popup side bar needs to be collapsible but with some visibility .
 4) The popup need to have 6 sections Screen Capture, Video Recording, Todo List , Save Bookmark, Help from AI, Data Google Docs/sheets
 5) Use icons in src\icons to take action from user.
+
+Change 2:
+
+Implement the following changes
+
+In the popup html : All the Buttons need to be 50% smaller. Each row should have 2 buttons.
+In the popup html Screen capture section : Add Edit screenshot button and add functionality to edit screenshots with drawing tools, text boxes, arrows, and stickers
+In the popup html Video Recording section : Add Webcam Recording button and functionality to record yourself alongside screen content for personalized explanations
+In the popup html Video Recording section : When Start Recording or Webcam recording  is in progress, these buttons need to change to Stop Recording or Stop Webcam recording.
+In the popup html Video Recording section : Add button to Edit Video recording
+In the popup html Todo List section : Add date along with task and default is today’s date
+In the popup html Todo List section : List top 5 tasks below the task input box
+In the popup html Todo List section :  across the list of top 5 tasks add check box to denote completion
+
+
+Change 3:
+
+In the popup html Screen capture section : When user clicks on Screen capture Full page button, the screen capture overlay should be shown. The screen capture overlay should have a close button on the top right corner.
+In the popup html Screen capture section : The screen capture overlay should have a drawing tools section with options to draw freehand, text, arrows, and stickers.
+In the popup html Screen capture section : The screen capture overlay should have a text input box at the bottom.
+In the popup html Screen capture section : The screen capture overlay should have a button at the bottom to save the screenshot.
+In the popup html Screen capture section : The screen capture overlay should have a button at the bottom to cancel the screenshot.
+
+In the popup html Screen capture section : When user clicks on Screen capture Selection button, the screen capture overlay should be shown. The screen capture overlay should have a close button on the top right corner.
+In the popup html Screen capture section : The screen capture overlay should have a drawing tools section with options to draw freehand, text, arrows, and stickers.
+In the popup html Screen capture section : The screen capture overlay should have a text input box at the bottom.
+In the popup html Screen capture section : The screen capture overlay should have a button at the bottom to save the screenshot.
+In the popup html Screen capture section : The screen capture overlay should have a button at the bottom to cancel the screenshot.
 

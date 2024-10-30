@@ -34,7 +34,7 @@
     ],
     "action": {
         "default_title": "Jarvis Helper",
-        "default_popup": "/popup/popup.html",
+        "default_popup": "popup/popup.html",
         "default_icon": {
             "16": "/icons/icon16.png",
             "48": "/icons/icon48.png",
@@ -57,6 +57,8 @@
         "resources": [
             "editor/*",
             "content/*",
+            "popup/*",
+            "assets/*",
             "background/*"
         ],
         "matches": ["<all_urls>"]

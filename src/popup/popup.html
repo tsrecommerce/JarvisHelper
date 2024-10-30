@@ -15,46 +15,35 @@
             </button>
             <h2>Welcome to Jarvis Helper</h2>
             <div class="auth-container">
-                <button id="googleSignIn" class="google-sign-in-button">
-                    <div class="google-btn-content">
-                        <div class="google-icon-wrapper">
-                            <img class="google-icon" 
-                                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4="
-                            />
-                        </div>
-                        <span class="btn-text">Sign in with Google</span>
-                    </div>
-                </button>
-                <div class="divider">or</div>
-                <button id="emailSignIn" class="email-sign-in-button">
-                    <i class="fas fa-envelope"></i>
-                    <span>Sign in with Email</span>
-                </button>
+                <button id="auth-button" class="auth-button">Sign In with Google</button>
+            </div>
+            <div id="content-area" style="display: none;">
+                <!-- Your authenticated content here -->
             </div>
         </div>
     </div>
 
     <!-- Add User Profile Section -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <img src="../icons/icon48.png" alt="Logo" class="logo-img">
-            <h1>Jarvis Helper</h1>
-            <button id="toggleSidebar" class="toggle-btn">≡</button>
-            <div id="userProfile" class="user-profile hidden">
-                <img id="userAvatar" src="" alt="Profile" class="avatar">
-                <div class="user-info">
-                    <span id="userName"></span>
-                    <button id="userMenu" class="icon-btn">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-                <div id="userDropdown" class="dropdown hidden">
-                    <a href="#" id="viewProfile">Profile</a>
-                    <a href="#" id="upgradeAccount">Upgrade to Pro</a>
-                    <a href="#" id="signOut">Sign Out</a>
-                </div>
+    <!-- Add the header section -->
+    <div class="header">
+        <div class="logo">
+            <img src="../assets/icon.png" alt="Jarvis Helper" />
+            <span>Jarvis Helper</span>
+        </div>
+        <!-- Auth container will be dynamically added here -->
+        <div id="auth-container">
+            <button id="sign-in-btn" class="sign-in-button">Sign In</button>
+        </div>
+        <!-- Profile menu will replace auth container when signed in -->
+        <div id="profile-container" class="profile-menu" style="display: none;">
+            <img src="../assets/profile.png" alt="Profile" class="profile-icon" />
+            <div class="dropdown-content">
+                <a href="#" id="profile-link">Profile</a>
+                <a href="#" id="upgrade-link">Upgrade to Pro</a>
+                <a href="#" id="sign-out">Sign Out</a>
             </div>
         </div>
+    </div>
     
         <div class="sections">
             <!-- Screen Capture Section -->
@@ -64,19 +53,31 @@
                     <i class="fas fa-chevron-down toggle-icon"></i>
                 </button>
                 <div class="section-content">
-                    <div class="tool-group two-column">
-                        <button id="fullPageCapture" class="tool-btn small">
-                            <i class="fas fa-file"></i>Full Page
-                        </button>
-                        <button id="selectionCapture" class="tool-btn small">
-                            <i class="fas fa-crop"></i>Selection
-                        </button>
-                        <button id="editScreenshot" class="tool-btn small">
-                            <i class="fas fa-edit"></i>Edit Screenshot
-                        </button>
-                        <button id="viewScreenshots" class="tool-btn small">
-                            <i class="fas fa-images"></i>View All
-                        </button>
+                    <div class="screen-capture">
+                        <h2>Screen Capture</h2>
+                        <div class="capture-buttons">
+                            <!-- Full Page -->
+                            <div class="capture-option">
+                                <button type="button" class="capture-btn" data-action="fullPage">
+                                    <span class="icon-container">
+                                        <img src="../assets/icons/fullpage.png" alt="" onerror="this.style.display='none'">
+                                        <i class="fas fa-file-alt fallback-icon"></i>
+                                    </span>
+                                    Full Page
+                                </button>
+                            </div>
+
+                            <!-- Selection -->
+                            <div class="capture-option">
+                                <button type="button" class="capture-btn" data-action="selection">
+                                    <span class="icon-container">
+                                        <img src="../assets/icons/selection.png" alt="" onerror="this.style.display='none'">
+                                        <i class="fas fa-crop-alt fallback-icon"></i>
+                                    </span>
+                                    Selection
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,6 +184,6 @@
             </div>
         </div>
     </div>
-    <script src="popup.js" type="module"></script>
+    <script type="module" src="popup.js"></script>
 </body>
 </html>

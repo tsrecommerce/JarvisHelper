@@ -757,3 +757,78 @@ body {
 .divider::after {
     right: 0;
 }
+
+/* Add only if not already present */
+.sign-in-button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.profile-menu .dropdown-content.show {
+    display: block;
+}
+
+.capture-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.capture-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.capture-btn:hover {
+    background: #e0e0e0;
+}
+
+.capture-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.capture-btn span {
+    font-size: 14px;
+}
+
+/* Add Font Awesome in your head section if not already present */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* Add these styles while keeping your existing CSS */
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.icon-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fallback-icon {
+    font-size: 16px;
+    color: currentColor;
+}
+
+/* Hide fallback icon when image is loaded */
+.icon-container img:not([style*="display: none"]) + .fallback-icon {
+    display: none;
+}

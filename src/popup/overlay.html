@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screenshot Editor</title>
+    <link rel="stylesheet" href="overlay.css">
+</head>
+<body>
+    <canvas id="capture-canvas"></canvas>
+    
+    <!-- Drawing Tools Section -->
+    <div class="drawing-tools">
+        <button id="freehand-tool" class="tool-btn">
+            <img src="../assets/freehand.png" alt="Freehand" />
+        </button>
+        <button id="text-tool" class="tool-btn">
+            <img src="../assets/text.png" alt="Text" />
+        </button>
+        <button id="arrow-tool" class="tool-btn">
+            <img src="../assets/arrow.png" alt="Arrow" />
+        </button>
+        <button id="sticker-tool" class="tool-btn">
+            <img src="../assets/sticker.png" alt="Sticker" />
+        </button>
+    </div>
+
+    <!-- Main Toolbar -->
+    <div class="toolbar">
+        <button id="save-btn">Save</button>
+        <button id="share-btn">Share</button>
+        <button id="copy-btn">Copy</button>
+        <button id="close-btn">Close</button>
+    </div>
+    
+    <!-- Bottom Controls -->
+    <div class="bottom-controls">
+        <textarea id="notes-input" placeholder="Add notes..."></textarea>
+        <div class="action-buttons">
+            <button id="save-screenshot" class="action-btn save">Save</button>
+            <button id="cancel-screenshot" class="action-btn cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { ScreenCaptureController } from '../controllers/ScreenCaptureController.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScreenCaptureController();
+        });
+    </script>
+</body>
+</html> 
